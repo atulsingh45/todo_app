@@ -3,7 +3,7 @@ name: Provision of Ec2 instance and configuration with Ansible
 on:
  push:
   branches:
-   - master
+   - main
 
 jobs: 
  provision_ec2:
@@ -17,10 +17,11 @@ jobs:
      with:
       python-version: "3.14"
     
-   - name: Install dependency
-     run: 
+   - name: Install dependencies
+     run:
       python -m pip install --upgrade pip
       pip install ansible boto3
       ansible-galaxy collection install amazon.aws
+ 
 
             
