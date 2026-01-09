@@ -30,11 +30,17 @@ describe("Todo List component", ()=>{
             expect(screen.getByText("Todo 2")).toBeInTheDocument();
         })
 
-        expect(fetch).toHaveBeenCalledWith(`${BACKEND_URL}/get-todos`);
+        expect(fetch).toHaveBeenCalledWith(`${BACKEND_URL}/get-todo`);
     })
 
     test("Add a new Todo", async()=>{
-        const newTodo = {_id: "1", title: "New todo", completed: false};
+        const newTodo = {_id: "1", title: "New Todo", completed: false};
+
+        fetch.mockResolvedValueOnce({
+            json: async () => [],
+        }).mockResolvedValueOnce({
+            json: async () => newTodo 
+        })
 
         render(<TodoList/>)
         const input = screen.getByPlaceholderText("Add a new Todo");
@@ -47,7 +53,7 @@ describe("Todo List component", ()=>{
             expect(screen.getByText("New Todo")).toBeInTheDocument();
         })
         
-        // expect(fetch).toHaveBeenCalledWith(`{BACKEND_URL}/get-todos`)
+        expect(fetch).toHaveBeenCalledWith(`${BACKEND_URL}/get-todo`, expect.any(Object))
     })
 
     // TODO: Write the  integ tests for deletion of todos

@@ -3,7 +3,7 @@ const {getTodos, addTodo} = require("../controllers/todoController")
 
 const router = express.Router()
 
-router.get("/get-todos", getTodo)
+router.get("/get-todos", getTodos)
 
 router.post("/add-todo", addTodo)
 
