@@ -31,7 +31,7 @@
   amazon.aws.ec2_instance:
     name: Ansible-created-instance
     key_name: "{{ ec2_key_name }}"
-    region: "{{ aws_region }}""
+    region: "{{ aws_region }}"
     instance_type: "{{ ec2_instance_type }}"
     image_id: "{{ ec2_ami_id }}"
     count: 1
